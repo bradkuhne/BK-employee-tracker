@@ -38,11 +38,15 @@ function askQuestions() {
             name: 'Add a new employee',
             value: 'addEmployee'
         },
+        {
+            name: 'Update an existing employee',
+            value: 'updateEmployee'
+        },
         ]
     }])
-    .then(answer => {
-        console.log ("Looking for an answer");    
-        switch (answer.option) {
+        .then(answer => {
+            console.log("Looking for an answer");
+            switch (answer.option) {
                 case "viewDepartments":
                     db.query('SELECT * FROM department', function (err, results) {
                         console.table(results);
@@ -143,6 +147,34 @@ function askQuestions() {
                                 VALUES ("${newFName}", "${newLName}",${newRoleId}, ${newMgrId});`,
                                 function (err, results) {
                                     console.log(newFName + " " + newLName + " has been added to the employee table");
+                                    if (err) throw err;
+                                    console.log("1 record inserted")
+                                    confirmCont();
+                                });
+                        })
+                    break;
+                case "updateEmployee":
+                    inquirer
+                        .prompt([
+                            {
+                                type: 'input',
+                                message: 'Enter the id of an employee to update:',
+                                name: 'targetEmpId',
+                            },
+                            {
+                                type: 'input',
+                                message: 'What is the new role id for this employee:',
+                                name: 'newRoleId',
+                            },
+                        ])
+                        .then((answers) => {
+                            targetEmpId = answers.targetEmpId
+                            newRoleId = answers.newRoleId
+                            db.query(`UPDATE employee 
+                                SET role_id = ${newRoleId}
+                                WHERE id = ${targetEmpId};`,
+                                function (err, results) {
+                                    console.log("Employee id " + targetEmpId + " has been updated with the new role " + newRoleId);
                                     if (err) throw err;
                                     console.log("1 record inserted")
                                     confirmCont();

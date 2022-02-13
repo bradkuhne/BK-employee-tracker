@@ -4,16 +4,16 @@ VALUES
     (2, 'Finance'),
     (3, 'Sales'),
     (4, 'Information Technology'),
-    (5, 'Strategy')
+    (5, 'Strategy');
 
-INSERT INTO role (id, title, salary, department_id)
+INSERT INTO roles (id, title, salary, department_id)
 VALUES
-    (1, 'Scorer', 999.12, 1),
+    (1, 'Scorer', 999.11, 1),
     (2, 'Shot blocker', 888.34, 2),
     (3, 'Rebounder', 777.56, 3),
     (4, 'Glue guy', 888.78, 4),
     (5, 'Hustler', 123.45, 5),
-    (6, 'Executive', 12345678.00, 2)
+    (6, 'Executive', 12345678.00, 2);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES

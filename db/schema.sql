@@ -1,14 +1,8 @@
-DROP TABLE IF EXISTS department;
-DROP TABLE IF EXISTS [role];
-DROP TABLE IF EXISTS employee;
-
-
-
 CREATE TABLE department (
     id INTEGER NOT NULL PRIMARY KEY,
     name VARCHAR(30) UNIQUE NOT NULL
 );
-CREATE TABLE [role] (
+CREATE TABLE roles (
     id INTEGER NOT NULL PRIMARY KEY,
     title VARCHAR(30) UNIQUE NOT NULL,
     salary DECIMAL(10,2),
@@ -25,8 +19,8 @@ CREATE TABLE employee (
   role_id INTEGER NOT NULL,
   CONSTRAINT fk_role
     FOREIGN KEY (role_id)
-    REFERENCES role(id)
-    ON DELETE CASCADE
+    REFERENCES roles(id)
+    ON DELETE CASCADE,
   manager_id INTEGER,
   CONSTRAINT fk_manager
     FOREIGN KEY (manager_id)

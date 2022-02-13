@@ -1,10 +1,51 @@
 # BK-employee-tracker
 Command line NodeJS / MySQL app to easily manage departments, roles and employees
 
-Screencastify walkthru link:
-GitHub Repository link:
+Screencastify walkthru link: 
+GitHub Repository link: https://github.com/bradkuhne/BK-employee-tracker
 
-ADD PROFESSIONAL README TEXT HERE
+## Description
+  
+ The BK Employee Tracker application allows a user to maintain employee, department and role tables via the command prompt. To initialize this application files can be seeded by running db.sql, schema.sql and seeds.sql in sequential order.  To start the application enter npm start from the command prompt.  There is no front end to this application.
+
+   
+## License
+  
+ [![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+  
+ The Unlicense is a template for disclaiming copyright monopoly interest in software you've written; in other words, it is a template for dedicating your software to the public domain. It combines a copyright waiver patterned after the very successful public domain SQLite project with the no-warranty statement from the widely-used MIT/X11 license.
+  
+## Table of Contents
+  
+* [Installation](#Installation)
+  
+* [Usage](#Usage)
+  
+* [Contributions](#Contributions)
+  
+* [Tests](#Tests)
+  
+* [Questions](#Questions)
+  
+## Installation
+  
+ To install the BK Employee Tracker you need to have Inquirer, Console.table and mysql2 installed.  After that, just start the application from the command prompt using NPM Start.  To initialize this application files can be seeded by running db.sql, schema.sql and seeds.sql in sequential order.  To start the application enter npm start from the command prompt.  There is no front end to this application.
+  
+## Usage
+  
+ The BK Employee tracker could be used by anyone who wants to manipulate simple joined tables.
+  
+## Contributions
+  
+ This project was solely developed by Brad Kuhne.
+  
+## Test Instructions
+  
+ This project was not developed with Express.  To test it, run index.js and compare results to expected results.
+  
+## Questions
+  
+ https://github.com/bradkuhne  Email: bjkuhne@aol.com
 
 
 User Story

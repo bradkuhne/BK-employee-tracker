@@ -44,8 +44,10 @@ function askQuestions() {
         },
         ]
     }])
-        .then(answer => {
-            switch (answer.option) {
+    .then (console.log("made it into the first .then"))    
+    .then(answer => {
+        console.log ("Looking for an answer");    
+        switch (answer.option) {
                 case "viewDepartments":
                     db.query('SELECT * FROM department', function (err, results) {
                         console.table(results);

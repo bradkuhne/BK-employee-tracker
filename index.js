@@ -25,7 +25,14 @@ function askQuestions() {
         }, {
             name: 'View all roles',
             value: 'viewRoles'
-        }]
+        }, {
+            name: 'View all employees',
+            value: 'viewEmployees'
+        }, {
+            name: 'Add a department',
+            value: 'addDepartment'
+        },
+        ]
     }])
         .then(answer => {
             switch (answer.option) {
@@ -37,6 +44,18 @@ function askQuestions() {
                     break;
                 case "viewRoles":
                     db.query('SELECT * FROM roles', function (err, results) {
+                        console.table(results);
+                        confirmCont();
+                    });
+                    break;
+                case "viewEmployees":
+                    db.query('SELECT * FROM employee', function (err, results) {
+                        console.table(results);
+                        confirmCont();
+                    });
+                    break;
+                case "addDepartment":
+                    db.query('SELECT * FROM department', function (err, results) {
                         console.table(results);
                         confirmCont();
                     });

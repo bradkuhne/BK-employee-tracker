@@ -29,8 +29,14 @@ function askQuestions() {
             name: 'View all employees',
             value: 'viewEmployees'
         }, {
-            name: 'Add a department',
+            name: 'Add a new department',
             value: 'addDepartment'
+        }, {
+            name: 'Add a new role',
+            value: 'addRole'
+        }, {
+            name: 'Add a new employee',
+            value: 'addEmployee'
         },
         ]
     }])
@@ -69,6 +75,77 @@ function askQuestions() {
                                 console.log("1 record inserted")
                                 confirmCont();
                             });
+                        })
+                    break;
+                case "addRole":
+                    inquirer
+                        .prompt([
+                            {
+                                type: 'input',
+                                message: 'What is the name of the role to add:',
+                                name: 'newRole',
+                            },
+                            {
+                                type: 'input',
+                                message: 'What is the salary for the role to add:',
+                                name: 'newSalary',
+                            },
+                            {
+                                type: 'input',
+                                message: 'What is the dept id for the role to add:',
+                                name: 'newDeptId',
+                            },
+                        ])
+                        .then((answers) => {
+                            newRole = answers.newRole
+                            newSalary = answers.newSalary
+                            newDeptId = answers.newDeptId
+                            db.query(`INSERT INTO roles (title, salary, department_id) 
+                            VALUES ("${newRole}", "${newSalary}", ${newDeptId});`, function (err, results) {
+                                console.log(newRole + " has been added to the role table");
+                                if (err) throw err;
+                                console.log("1 record inserted")
+                                confirmCont();
+                            });
+                        })
+                    break;
+                case "addEmployee":
+                    inquirer
+                        .prompt([
+                            {
+                                type: 'input',
+                                message: 'What is the first name of the employee to add:',
+                                name: 'newFName',
+                            },
+                            {
+                                type: 'input',
+                                message: 'What is the last name for the employee to add:',
+                                name: 'newLName',
+                            },
+                            {
+                                type: 'input',
+                                message: 'What is the role id for the employee to add:',
+                                name: 'newRoleId',
+                            },
+                            {
+                                type: 'input',
+                                message: 'What is the manager id of the employee to add:',
+                                name: 'newMgrId',
+                            },
+                        ])
+                        .then((answers) => {
+                            newFName = answers.newFName
+                            newLName = answers.newLName
+                            newRoleId = answers.newRoleId
+                            newMgrId = answers.newMgrId
+                            db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) 
+                                VALUES ("${newFName}", "${newLName}",${newRoleId}, ${newMgrId});`,
+                                function (err, results) {
+                                    console.log(newFName + " " + newLName + " has been added to the employee table");
+                                    if (err) throw err;
+                                    console.log("1 record inserted")
+                                    confirmCont();
+                                });
                         })
                     break;
                 default:

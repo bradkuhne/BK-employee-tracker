@@ -40,7 +40,6 @@ function askQuestions() {
         },
         ]
     }])
-    .then (console.log("made it into the first .then"))    
     .then(answer => {
         console.log ("Looking for an answer");    
         switch (answer.option) {

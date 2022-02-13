@@ -1,7 +1,7 @@
 # BK-employee-tracker
 Command line NodeJS / MySQL app to easily manage departments, roles and employees
 
-Screencastify walkthru link: 
+Screencastify walkthru link: https://watch.screencastify.com/v/Z31QusOKA4Siq2ZLkrHa
 GitHub Repository link: https://github.com/bradkuhne/BK-employee-tracker
 
 ## Description

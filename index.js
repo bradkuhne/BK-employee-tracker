@@ -38,6 +38,10 @@ function askQuestions() {
             name: 'Add a new employee',
             value: 'addEmployee'
         },
+        {
+            name: 'Update an existing employee',
+            value: 'updateEmployee'
+        },
         ]
     }])
         .then(answer => {
@@ -148,6 +152,33 @@ function askQuestions() {
                                 });
                         })
                     break;
+                    case "updateEmployee":
+                        inquirer
+                            .prompt([
+                                {
+                                    type: 'input',
+                                    message: 'What is the id of the employee to update',
+                                    name: 'targetEmpId',
+                                },
+                                {
+                                    type: 'input',
+                                    message: 'What is the updated role id for the employee:',
+                                    name: 'updatedRoleId',
+                                },
+                            ])
+                            .then((answers) => {
+                                targetEmpId = answers.targetEmpId
+                                updatedRoleId = answers.updatedRoleId
+                                db.query (`UPDATE employee SET role_id = ${updatedRoleId} 
+                                    WHERE id = ${targetEmpId}`,
+                                    function (err, results) {
+                                        console.log("Employee # " + targetEmpId + " has been changed to role " + updatedRoleId);
+                                        if (err) throw err;
+                                        console.log("1 record updated")
+                                        confirmCont();
+                                    });
+                            })
+                        break;
                 default:
                     console.log("No valid option chosen.");
             }

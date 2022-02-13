@@ -55,10 +55,21 @@ function askQuestions() {
                     });
                     break;
                 case "addDepartment":
-                    db.query('SELECT * FROM department', function (err, results) {
-                        console.table(results);
-                        confirmCont();
-                    });
+                    inquirer
+                        .prompt({
+                            type: 'input',
+                            message: 'What is the name of the department to add:',
+                            name: 'newDept'
+                        })
+                        .then((answers) => {
+                            newDept = answers.newDept
+                            db.query(`INSERT INTO department (name) VALUES ("${newDept}");`, function (err, results) {
+                                console.log(newDept + " has been added to the department table");
+                                if (err) throw err;
+                                console.log("1 record inserted")
+                                confirmCont();
+                            });
+                        })
                     break;
                 default:
                     console.log("No valid option chosen.");
